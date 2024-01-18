@@ -9,17 +9,14 @@ namespace BenchMark
     {
         private readonly int[] intArray;
         private readonly Stack<int> intStack;
-        private readonly Stack<int> intStackRef;
         private int tmpRes;
 
         public SumBenchmark()
         {
             var size = 100;
             intArray = new int[size];
-            intStackRef = new Stack<int>();
             for (int i = 0; i < intArray.Length; i++){
                 intArray[i] = i;
-                intStackRef.Push(i);
             }
             intStack = new Stack<int>(intArray);
         }
@@ -50,16 +47,6 @@ namespace BenchMark
             var res = 0;
             while(intStack.Count > 0) {
                 res += intStack.Pop();
-            }
-            tmpRes = res;
-        }
-
-        [Benchmark]
-        public void StackWithRef()
-        {
-            var res = 0;
-            while(intStack.Count > 0) {
-                res += intStackRef.Pop();
             }
             tmpRes = res;
         }
