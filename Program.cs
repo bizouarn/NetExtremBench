@@ -1,6 +1,8 @@
 ﻿using BenchMark;
+using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
-BenchmarkDotNet.Reports.Summary summary;
+Summary summary;
 summary = BenchmarkRunner.Run<PairBenchmark>();
 summary = BenchmarkRunner.Run<SumBenchmark>();
+summary = BenchmarkRunner.Run<ForOrCalcDate>();

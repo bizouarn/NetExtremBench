@@ -1,0 +1,35 @@
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
+
+namespace BenchMark;
+
+[MemoryDiagnoser]
+public class ForOrCalcDate
+{
+    private DateTime date1;
+    private DateTime date2;
+    private readonly int periodDiv = 12;
+
+    public ForOrCalcDate()
+    {
+        var date1 = DateTime.Now;
+        var date2 = DateTime.Now.AddDays(10);
+    }
+
+    [Benchmark]
+    public void Calc()
+    {
+        var periode = (int) Math.Ceiling((date2 - date1).TotalHours / periodDiv);
+    }
+
+    [Benchmark]
+    public void For()
+    {
+        var periode = 0;
+        while (date1 < date2)
+        {
+            date1 = date1.AddHours(periodDiv); // Ajoute la durée d'une période à la date actuelle
+            periode++; // Incrémente le compteur de périodes
+        }
+    }
+}

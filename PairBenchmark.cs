@@ -1,62 +1,59 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
-namespace BenchMark
+namespace BenchMark;
+
+[MemoryDiagnoser]
+public class PairBenchmark
 {
-    [MemoryDiagnoser]
-    public class PairBenchmark
+    private readonly List<int> randomNumbers;
+    private readonly Random rnd = new();
+
+    public PairBenchmark()
     {
-        private readonly Random rnd = new Random();
-        private readonly List<int> randomNumbers;
+        randomNumbers = GenerateRandomNumbers(1000);
+    }
 
-        public PairBenchmark()
+    [Benchmark]
+    public void Modulo()
+    {
+        foreach (var randomNumber in randomNumbers)
         {
-            randomNumbers = GenerateRandomNumbers(1000);
+            var result = randomNumber % 2 == 0;
         }
+    }
 
-        [Benchmark]
-        public void Modulo()
+    [Benchmark]
+    public void Bit()
+    {
+        foreach (var randomNumber in randomNumbers)
         {
-            foreach (var randomNumber in randomNumbers)
-            {
-                var result = randomNumber % 2 == 0;
-            }
+            var result = (randomNumber & 1) == 0;
         }
+    }
 
-        [Benchmark]
-        public void Bit()
+    [Benchmark]
+    public void ParallelModulo()
+    {
+        Parallel.ForEach(randomNumbers, randomNumber =>
         {
-            foreach (var randomNumber in randomNumbers)
-            {
-                var result = (randomNumber & 1) == 0;
-            }
-        }
+            var result = randomNumber % 2 == 0;
+        });
+    }
 
-        [Benchmark]
-        public void ParallelModulo()
+    [Benchmark]
+    public void ParallelBit()
+    {
+        Parallel.ForEach(randomNumbers, randomNumber =>
         {
-            Parallel.ForEach(randomNumbers, randomNumber =>
-            {
-                var result = randomNumber % 2 == 0;
-            });
-        }
+            var result = (randomNumber & 1) == 0;
+        });
+    }
 
-        [Benchmark]
-        public void ParallelBit()
-        {
-            Parallel.ForEach(randomNumbers, randomNumber =>
-            {
-                var result = (randomNumber & 1) == 0;
-            });
-        }
-
-        private List<int> GenerateRandomNumbers(int count)
-        {
-            var numbers = new List<int>(count);
-            for (int i = 0; i < count; i++)
-            {
-                numbers.Add(rnd.Next(0, 1001));
-            }
-            return numbers;
-        }
+    private List<int> GenerateRandomNumbers(int count)
+    {
+        var numbers = new List<int>(count);
+        for (var i = 0; i < count; i++) numbers.Add(rnd.Next(0, 1001));
+        return numbers;
     }
 }
