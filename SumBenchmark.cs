@@ -1,5 +1,4 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
 
 namespace BenchMark;
 
@@ -7,7 +6,7 @@ namespace BenchMark;
 public class SumBenchmark
 {
     private readonly int[] intArray;
-    private readonly Stack<int> intStack;
+    private Stack<int> intStack;
     private int tmpRes;
 
     public SumBenchmark()
@@ -15,6 +14,12 @@ public class SumBenchmark
         var size = 100;
         intArray = new int[size];
         for (var i = 0; i < intArray.Length; i++) intArray[i] = i;
+        intStack = new Stack<int>(intArray);
+    }
+
+    [IterationSetup]
+    public void IterationSetup()
+    {
         intStack = new Stack<int>(intArray);
     }
 
