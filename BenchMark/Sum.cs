@@ -1,15 +1,15 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace BenchMark;
+namespace BenchMark.BenchMark;
 
 [MemoryDiagnoser]
-public class SumBenchmark
+public class Sum
 {
     private readonly int[] intArray;
     private Stack<int> intStack;
     private int tmpRes;
 
-    public SumBenchmark()
+    public Sum()
     {
         var size = 100;
         intArray = new int[size];

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using BenchmarkDotNet.Attributes;
 
-namespace BenchMark;
+namespace BenchMark.BenchMark;
 
 [MemoryDiagnoser]
 public class CalcBrightness

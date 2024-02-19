@@ -1,15 +1,14 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
 
-namespace BenchMark;
+namespace BenchMark.BenchMark;
 
 [MemoryDiagnoser]
-public class PairBenchmark
+public class Pair
 {
     private readonly List<int> randomNumbers;
     private readonly Random rnd = new();
 
-    public PairBenchmark()
+    public Pair()
     {
         randomNumbers = GenerateRandomNumbers(1000);
     }
