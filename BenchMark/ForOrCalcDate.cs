@@ -1,13 +1,13 @@
 using BenchmarkDotNet.Attributes;
 
-namespace BenchMark;
+namespace BenchMark.BenchMark;
 
 [MemoryDiagnoser]
 public class ForOrCalcDate
 {
+    private readonly int periodDiv = 12;
     private DateTime date1;
     private DateTime date2;
-    private readonly int periodDiv = 12;
 
     public ForOrCalcDate()
     {

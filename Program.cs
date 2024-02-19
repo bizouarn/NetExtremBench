@@ -1,4 +1,3 @@
-using BenchMark;
 using BenchMark.BenchMark;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
@@ -9,3 +8,4 @@ summary = BenchmarkRunner.Run<Sum>();
 summary = BenchmarkRunner.Run<ForOrCalcDate>();
 summary = BenchmarkRunner.Run<CalcBrightness>();
 summary = BenchmarkRunner.Run<Sort>();
+summary = BenchmarkRunner.Run<AddDict>();
