@@ -11,9 +11,10 @@ public class Sum
 
     public Sum()
     {
-        var size = 100;
+        var size = 1000;
+        var rand = new Random();
         intArray = new int[size];
-        for (var i = 0; i < intArray.Length; i++) intArray[i] = i;
+        for (var i = 0; i < intArray.Length; i++) intArray[i] = rand.Next(0,1000);
         intStack = new Stack<int>(intArray);
     }
 
@@ -52,5 +53,29 @@ public class Sum
     public void Link()
     {
         var res = intArray.Sum();
+    }
+
+    [Benchmark]
+    public void SpanFor()
+    {
+        var res = 0;
+        var span = intArray.AsSpan();
+        for (var i = 0; i < span.Length; i++)
+        {
+            res += span[i];
+        }
+        tmpRes = res;
+    }
+
+    [Benchmark]
+    public void SpanForeach()
+    {
+        var res = 0;
+        var span = intArray.AsSpan();
+        foreach(var i in span)
+        {
+            res += i;
+        }
+        tmpRes = res;
     }
 }
