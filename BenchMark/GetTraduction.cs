@@ -1,10 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using BenchmarkDotNet.Attributes;
 namespace BenchMark.BenchMark
 {
     [MemoryDiagnoser]
@@ -27,11 +21,11 @@ namespace BenchMark.BenchMark
 
         public string GetTraductionSpan(ReadOnlySpan<char> id)
         {
-
-            if (!id.Contains(separator)) return id.ToString();
-            var split = id.Slice(0, id.IndexOf(separator));
-            var secondPart = id.Slice(id.IndexOf(separator) + 1);
-            return GetTraductionFake(split.ToString(), secondPart.ToString());
+            var separatorIndex = id.IndexOf(separator);
+            if (separatorIndex == -1 || separatorIndex + 1 >= id.Length) return id.ToString();
+            var group = id[..separatorIndex];
+            var traductionId = id[(separatorIndex + 1)..];
+            return GetTraductionFake(group.ToString(), traductionId.ToString());
         }
 
         public string GetTraductionStr(string id)

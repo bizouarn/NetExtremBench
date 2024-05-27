@@ -11,8 +11,8 @@ public class ForOrCalcDate
 
     public ForOrCalcDate()
     {
-        var date1 = DateTime.Now;
-        var date2 = DateTime.Now.AddDays(10);
+        date1 = DateTime.Now;
+        date2 = DateTime.Now.AddDays(10);
     }
 
     [Benchmark]
