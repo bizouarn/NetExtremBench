@@ -7,7 +7,7 @@ public class ForOrCalcDate
 {
     private readonly int periodDiv = 12;
     private DateTime date1;
-    private DateTime date2;
+    private readonly DateTime date2;
 
     public ForOrCalcDate()
     {

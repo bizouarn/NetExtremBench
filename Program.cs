@@ -9,4 +9,5 @@ summary = BenchmarkRunner.Run<ForOrCalcDate>();
 summary = BenchmarkRunner.Run<CalcBrightness>();
 summary = BenchmarkRunner.Run<Sort>();
 summary = BenchmarkRunner.Run<AddDict>();
-*/summary = BenchmarkRunner.Run<GetTraduction>();
+summary = BenchmarkRunner.Run<GetTraduction>();*/
+summary = BenchmarkRunner.Run<Capitalize>();
