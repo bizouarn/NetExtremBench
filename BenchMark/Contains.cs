@@ -2,12 +2,15 @@
 
 namespace BenchMark.BenchMark;
 
+[ShortRunJob]
+[HtmlExporter]
 [MemoryDiagnoser]
 public class Contains
 {
     private const int _max = 100000;
     private readonly int[] _array = Enumerable.Range(0, _max).ToArray();
     private readonly List<int> _list = Enumerable.Range(0, _max).ToList();
+    private readonly HashSet<int> _hashSet = Enumerable.Range(0, _max).ToHashSet();
     private bool exist;
 
     [Benchmark]
@@ -50,6 +53,18 @@ public class Contains
     }
 
     public bool ListContain(List<int> list, int value)
+    {
+        return list.Contains(value);
+    }
+
+
+    [Benchmark]
+    public void HashSetContain()
+    {
+        exist = HashSetContain(_hashSet, _max);
+    }
+
+    public bool HashSetContain(HashSet<int> list, int value)
     {
         return list.Contains(value);
     }
