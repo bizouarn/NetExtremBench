@@ -28,10 +28,4 @@ public class Sort
     {
         res = res.OrderBy(x => x).ToList();
     }
-
-    [Benchmark]
-    public void OrderLinq()
-    {
-        res = res.Order().ToList();
-    }
 }
