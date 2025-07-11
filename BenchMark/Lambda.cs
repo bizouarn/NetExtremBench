@@ -18,15 +18,7 @@ public class Lambda
     [IterationSetup]
     public void IterationSetup()
     {
-        var values = new List<Personne>
-        {
-            new Personne { Name = "John Doe", Age = 30, Address = "123 Main St" },
-            new Personne { Name = "Jane Smith", Age = 25, Address = "456 Elm St" },
-            new Personne { Name = "Bob Johnson", Age = 40, Address = "789 Pine St" }
-        };
-
-        res = new List<Personne>();
-        for (var i = 0; i < N; i++) res.Add(values[i % 3].Copy());
+        res = Personne.GetAll(N).ToList();
     }
 
     [Benchmark]
