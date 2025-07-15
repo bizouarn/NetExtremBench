@@ -12,7 +12,7 @@ NetExtremBench est mon laboratoire personnel de benchmarks pour explorer les per
 
 - **Exploration personnelle** : Tester des hypothèses et curiosités sur les performances .NET
 - **Lab évolutif** : Ajouter des tests selon mes besoins et questionnements
-- **Apprentissage empirique** : Valider ou invalider des assumptions par la pratique
+- **Apprentissage empirique** : Valider ou invalider des hypothèses par la pratique
 
 ## 🔧 Technologies utilisées
 
