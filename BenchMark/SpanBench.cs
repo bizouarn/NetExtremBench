@@ -8,7 +8,7 @@ namespace BenchMark.BenchMark
     [MemoryDiagnoser]
     public class SpanBench
     {
-        private string _guid = Guid.NewGuid() + "#" + System.Guid.NewGuid().ToString();
+        private string _guid = Guid.NewGuid() + "#" + Guid.NewGuid();
         private char[] array;
         private object _res;
 

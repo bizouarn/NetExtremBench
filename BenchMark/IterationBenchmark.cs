@@ -61,5 +61,4 @@ namespace BenchMark.BenchMark
             return sum;
         }
     }
-
 }

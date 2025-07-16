@@ -9,7 +9,7 @@ namespace BenchMark.BenchMark
     [MemoryDiagnoser]
     public class IndexOf
     {
-        private string _guid = System.Guid.NewGuid().ToString() + "#" + System.Guid.NewGuid().ToString();
+        private string _guid = Guid.NewGuid() + "#" + Guid.NewGuid();
         private int _res = 0;
 
         [Benchmark]

@@ -8,7 +8,7 @@ namespace BenchMark.BenchMark
     [MemoryDiagnoser]
     public class StringToArray
     {
-        private string _guid = System.Guid.NewGuid().ToString() + "#" + System.Guid.NewGuid().ToString();
+        private string _guid = Guid.NewGuid() + "#" + Guid.NewGuid();
         private char[] _res;
 
         [Benchmark]
@@ -27,9 +27,9 @@ namespace BenchMark.BenchMark
         }
 
         [Benchmark]
-        public void AsSpan()
+        public void ToArray()
         {
-            _res = _guid.AsSpan().ToArray();
+            _res = _guid.ToArray();
         }
     }
 }

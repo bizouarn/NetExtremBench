@@ -1,19 +1,26 @@
-﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
+using ZLinq;
 
 namespace BenchMark.BenchMark;
 
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net80)]
 [MemoryDiagnoser]
+[GcServer(true)]
 public class Sum
 {
-    private readonly int[] intArray;
+    private int[] intArray;
     private Stack<int> intStack;
+
+    [Params(1_000, 10_000, 50_000)] public int N;
     private int tmpRes;
 
-    public Sum()
+    [GlobalSetup]
+    public void GlobalSetup()
     {
-        var size = 1000;
         var rand = new Random();
-        intArray = new int[size];
+        intArray = new int[N];
         for (var i = 0; i < intArray.Length; i++) intArray[i] = rand.Next(0, 1000);
         intStack = new Stack<int>(intArray);
     }
@@ -50,9 +57,15 @@ public class Sum
     }
 
     [Benchmark]
-    public void Link()
+    public void Linq()
     {
-        var res = intArray.Sum();
+        tmpRes = intArray.Sum();
+    }
+
+    [Benchmark]
+    public void ZLinq()
+    {
+        tmpRes = intArray.AsValueEnumerable().Sum();
     }
 
     [Benchmark]

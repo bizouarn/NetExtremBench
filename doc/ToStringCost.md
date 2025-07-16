@@ -43,16 +43,16 @@ public class ToStringCost
 }
 ```
 
-## 📊 Résultats observés (exemples)
+## 📊 Résultats observés
 
-| Method         | Job      | Runtime  | Mean      | Error     | StdDev    | Allocated |
-|--------------- |--------- |--------- |----------:|----------:|----------:|----------:|
-| AccessOperateur| .NET 6.0 | .NET 6.0 | 0.0000 ns | 0.0000 ns | 0.0000 ns |         - |
-| AccessToString | .NET 6.0 | .NET 6.0 | 0.4209 ns | 0.0053 ns | 0.0047 ns |         - |
-| AccessOperateur| .NET 8.0 | .NET 8.0 | 0.0979 ns | 0.0066 ns | 0.0055 ns |         - |
-| AccessToString | .NET 8.0 | .NET 8.0 | 0.2335 ns | 0.0107 ns | 0.0100 ns |         - |
+| Method          | Job      | Runtime  | Mean      | Error     | StdDev    | Allocated |
+|---------------- |--------- |--------- |----------:|----------:|----------:|----------:|
+| AccessOperateur | .NET 6.0 | .NET 6.0 | 0.2452 ns | 0.0223 ns | 0.0198 ns |         - |
+| AccessToString  | .NET 6.0 | .NET 6.0 | 0.4063 ns | 0.0203 ns | 0.0190 ns |         - |
+| AccessOperateur | .NET 8.0 | .NET 8.0 | 0.0961 ns | 0.0224 ns | 0.0199 ns |         - |
+| AccessToString  | .NET 8.0 | .NET 8.0 | 0.2203 ns | 0.0075 ns | 0.0067 ns |         - |
 
-## Conclusion
+## 🔍 Conclusion
 
 * Utiliser **`Syntaxe`** quand tu veux accéder à la donnée métier.
 * Réserver **`ToString()`** pour les besoins d'affichage, debug ou log.
