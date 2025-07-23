@@ -13,9 +13,9 @@ namespace BenchMark.BenchMark
         private Operateur _operateur = new ("T > 0 && T < 10");
 
         [Benchmark]
-        public string AccessOperateur() => _operateur.Syntaxe;
+        public string Direct() => _operateur.Syntaxe;
 
         [Benchmark]
-        public string AccessToString() => _operateur.ToString();
+        public string ToString() => _operateur.ToString();
     }
 }

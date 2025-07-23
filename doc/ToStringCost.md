@@ -36,21 +36,21 @@ public class ToStringCost
     private Operateur _operateur = new("T > 0 && T < 10");
 
     [Benchmark]
-    public string AccessOperateur() => _operateur.Syntaxe;
+    public string Direct() => _operateur.Syntaxe;
 
     [Benchmark]
-    public string AccessToString() => _operateur.ToString();
+    public string ToString() => _operateur.ToString();
 }
 ```
 
 ## 📊 Résultats observés
 
-| Method          | Job      | Runtime  | Mean      | Error     | StdDev    | Allocated |
-|---------------- |--------- |--------- |----------:|----------:|----------:|----------:|
-| AccessOperateur | .NET 6.0 | .NET 6.0 | 0.2452 ns | 0.0223 ns | 0.0198 ns |         - |
-| AccessToString  | .NET 6.0 | .NET 6.0 | 0.4063 ns | 0.0203 ns | 0.0190 ns |         - |
-| AccessOperateur | .NET 8.0 | .NET 8.0 | 0.0961 ns | 0.0224 ns | 0.0199 ns |         - |
-| AccessToString  | .NET 8.0 | .NET 8.0 | 0.2203 ns | 0.0075 ns | 0.0067 ns |         - |
+| Method    | Job      | Runtime  | Mean      | Error     | StdDev    | Allocated |
+|----------:|---------:|---------:|----------:|----------:|----------:|----------:|
+| Direct    | .NET 6.0 | .NET 6.0 | 0.2452 ns | 0.0223 ns | 0.0198 ns |         - |
+| ToString  | .NET 6.0 | .NET 6.0 | 0.4063 ns | 0.0203 ns | 0.0190 ns |         - |
+| Direct    | .NET 8.0 | .NET 8.0 | 0.0961 ns | 0.0224 ns | 0.0199 ns |         - |
+| ToString  | .NET 8.0 | .NET 8.0 | 0.2203 ns | 0.0075 ns | 0.0067 ns |         - |
 
 ## 🔍 Conclusion
 
