@@ -1,11 +1,8 @@
 using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
 using ZLinq;
 
 namespace BenchMark.BenchMark;
 
-[SimpleJob(RuntimeMoniker.Net60)]
-[SimpleJob(RuntimeMoniker.Net80)]
 [MemoryDiagnoser]
 [GcServer(true)]
 public class Sum

@@ -5,7 +5,7 @@ namespace BenchMark.BenchMark;
 [MemoryDiagnoser]
 public class ForOrCalcDate
 {
-    private readonly int periodDiv = 12;
+    private const int periodDiv = 12;
     private DateTime date1;
     private readonly DateTime date2;
 

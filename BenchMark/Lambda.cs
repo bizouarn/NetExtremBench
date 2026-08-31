@@ -12,8 +12,7 @@ public class Lambda
 {
     public List<Personne> res;
 
-    [Params(10000, 100000)]
-    public int N;
+    [Params(10000, 100000)] public int N;
 
     [IterationSetup]
     public void IterationSetup()

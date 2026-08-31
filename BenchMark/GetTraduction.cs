@@ -6,7 +6,7 @@ namespace BenchMark.BenchMark;
 public class GetTraduction
 {
     private const char separator = '|';
-    private readonly string id = "ID_TEST|Save";
+    private const string id = "ID_TEST|Save";
 
     [Benchmark]
     public void GetTraductionSpan()

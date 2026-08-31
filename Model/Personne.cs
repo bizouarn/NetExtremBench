@@ -25,7 +25,8 @@
 
         public static IEnumerable<Personne> GetAll(int N = 10_000)
         {
-            var values = new Personne[] {
+            var values = new Personne[]
+            {
                 new Personne { Name = "John Doe", Age = 30, Address = "123 Main St" },
                 new Personne { Name = "Jane Smith", Age = 25, Address = "456 Elm St" },
                 new Personne { Name = "Bob Johnson", Age = 40, Address = "789 Pine St" },

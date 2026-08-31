@@ -11,8 +11,7 @@ namespace BenchMark.BenchMark
     {
         private StringBuilder _sb;
 
-        [Params(10, 100, 10000, 100000)]
-        public int N;
+        [Params(10, 100, 10000, 100000)] public int N;
 
         [GlobalSetup]
         public void Setup()
