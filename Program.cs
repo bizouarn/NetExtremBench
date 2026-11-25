@@ -3,4 +3,4 @@ using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
 Summary summary;
-summary = BenchmarkRunner.Run<ToStringCost>();
+summary = BenchmarkRunner.Run<GetHashCodeBenchmark>();
