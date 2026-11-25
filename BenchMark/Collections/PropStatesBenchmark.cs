@@ -5,7 +5,7 @@ namespace BenchMark.BenchMark
     [MemoryDiagnoser]
     public class PropStatesBenchmark
     {
-        // Nombre total de propriétés trackées sur le ViewModel (un ERP peut
+        // Nombre total de propriétés trackées sur le ViewModel (une application riche peut
         // facilement avoir plusieurs milliers de propriétés bindées sur un
         // écran complexe : grille, formulaire multi-onglets, etc.)
         [Params(1000, 5000)]
@@ -34,7 +34,7 @@ namespace BenchMark.BenchMark
             for (int i = 0; i < TotalProperties; i++)
             {
                 var propName = $"Property_{i}";
-                _dictBefore[propName] = false; // toutes enregistrées, comme dans le code avant patch
+                _dictBefore[propName] = false; // toutes enregistrées, comme dans la version "avant"
             }
 
             // On marque ChangedCount propriétés comme modifiées, réparties
@@ -54,7 +54,7 @@ namespace BenchMark.BenchMark
         }
 
         [Benchmark(Baseline = true)]
-        public int Baseline_Dictionary_ContainsValue()
+        public int Before_Dictionary_ContainsValue()
         {
             int changedCount = 0;
             for (int i = 0; i < IsChangedCalls; i++)
@@ -66,7 +66,7 @@ namespace BenchMark.BenchMark
         }
 
         [Benchmark]
-        public int Patched_HashSet_Count()
+        public int After_HashSet_Count()
         {
             int changedCount = 0;
             for (int i = 0; i < IsChangedCalls; i++)

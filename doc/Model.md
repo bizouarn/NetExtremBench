@@ -1,22 +1,10 @@
-# Benchmark : TODO
+# Modèle de test (`Model/`)
 
-## 🎯 Objectif
+Petites classes partagées par certains benchmarks. Elles ne sont pas des benchmarks elles-mêmes.
 
-Comparer ... :
-TODO
-
-## 🧱 Code testé
-
-```csharp
-TODO
-```
-
-## 📊 Résultats observés
-
-| Method            | Job      | Runtime  | Mean         | Error      | StdDev     | Allocated |
-|------------------ |--------- |--------- |-------------:|-----------:|-----------:|----------:|
-TODO
-
-## 🔍 Conclusion
-
-TODO
+| Type | Rôle | Utilisé par |
+|------|------|-------------|
+| `Personne` / `IPersonne` | Entité de test avec `Id` aléatoire ; `Personne.GetAll(n)` génère `n` copies à partir d'un jeu fixe de 21 personnes | [Lambda](Lambda.md) |
+| `Operateur` | Objet portant une `Syntaxe`, dont `ToString()` renvoie la valeur | [ToStringCost](ToStringCost.md) |
+| `TypeCompteEnum` | Enum de test | [EnumUtils](EnumUtils.md) |
+| `PersonneMapper` | Mapper d'exemple (actuellement inutilisé) | — |

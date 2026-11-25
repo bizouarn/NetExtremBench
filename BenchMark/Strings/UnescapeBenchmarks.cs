@@ -36,14 +36,28 @@ namespace BenchMark.BenchMark
             for (var i = 0; i < input.Length - 1; i++)
             {
                 if (input[i] == escapeChar1 && input[i + 1] == escapeChar2)
+                {
                     count++;
+                    i++;
+                }
             }
 
             if (count == 0) return input;
 
-            var result = new char[input.Length - count].AsSpan();
-            input.CopyTo(result);
-
+            var result = new char[input.Length - count];
+            var w = 0;
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (i < input.Length - 1 && input[i] == escapeChar1 && input[i + 1] == escapeChar2)
+                {
+                    result[w++] = target;
+                    i++;
+                }
+                else
+                {
+                    result[w++] = input[i];
+                }
+            }
 
             return result;
         }

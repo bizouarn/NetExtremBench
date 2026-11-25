@@ -19,7 +19,7 @@ namespace BenchMark.BenchMark
         private const string SafeString = "NomDeMembreParfaitementValide";
         private const string UnsafeString = "Mon.Nom / De\tMembre";
 
-        // --- V1 : Ta première logique (Corrigée avec le "!") ---
+        // --- V1 : Vérifie d'abord IndexOfAny, puis remplace ---
         [Benchmark]
         public string V1_WithContainsCheck_Unsafe()
         {
@@ -34,7 +34,7 @@ namespace BenchMark.BenchMark
             return NormaliseV1(SafeString);
         }
 
-        // --- V2 : Ta deuxième logique (Directement les Replace) ---
+        // --- V2 : Reconstruit le tableau de caractères à chaque appel ---
         [Benchmark]
         public string V2_DirectReplace_Unsafe() => NormaliseV2(UnsafeString);
 

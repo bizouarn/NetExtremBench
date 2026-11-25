@@ -1,8 +1,3 @@
-// -----------------------------------------------------
-//  Copyright (c) HERAKLES 2026 - Tous droits réservés
-//  Author : Aymeric Bizouarn
-// -----------------------------------------------------
-
 using System.Numerics;
 using System.Runtime.InteropServices;
 using BenchmarkDotNet.Attributes;
@@ -16,7 +11,7 @@ public class SumFloat
     private List<float> floatList;
     private float[] floatArray;
 
-    [Params(1460)] // Ta taille spécifique
+    [Params(1460)] // Taille d'un cas rÃ©el : ~1,5 k valeurs
     public int N;
 
     [GlobalSetup]
@@ -31,7 +26,7 @@ public class SumFloat
     [Benchmark(Baseline = true)]
     public float LinqSum()
     {
-        // Ce que tu faisais avec .Sum()
+        // RÃ©fÃ©rence : LINQ Sum()
         return floatList.Sum();
     }
 
@@ -61,7 +56,7 @@ public class SumFloat
     [Benchmark]
     public float SpanFor()
     {
-        // Note: Nécessite System.Memory en .NET 472
+        
         float res = 0f;
         var span = CollectionsMarshal.AsSpan(floatList);
         for (int i = 0; i < span.Length; i++)
@@ -74,13 +69,13 @@ public class SumFloat
     [Benchmark]
     public float VectorizedSIMD()
     {
-        // Optimisation matérielle (si supporté par le CPU)
+        // Optimisation matÃ©rielle (si supportÃ©e par le CPU)
         var span = CollectionsMarshal.AsSpan(floatList);
         var vectorSize = Vector<float>.Count;
         var acc = new Vector<float>(0f);
         int i = 0;
 
-        // On additionne par blocs (ex: 4 ou 8 floats à la fois)
+        // On additionne par blocs (ex: 4 ou 8 floats Ã  la fois)
         for (; i <= span.Length - vectorSize; i += vectorSize)
         {
             acc += new Vector<float>(span.Slice(i, vectorSize));

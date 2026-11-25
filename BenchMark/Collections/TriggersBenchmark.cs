@@ -18,9 +18,9 @@ namespace BenchMark.BenchMark
             var list = new List<object>();
             for (int i = 0; i < Size - 1; i++)
             {
-                list.Add(new MyOtherAttribute());
+                list.Add(new OtherMarkerAttribute());
             }
-            list.Add(new IgnoreLogAttribute());
+            list.Add(new SkipMarkerAttribute());
 
             _triggersList = list;
             _triggersArray = list.ToArray();
@@ -29,7 +29,7 @@ namespace BenchMark.BenchMark
         [Benchmark(Baseline = true)]
         public object? Linq_OfType_Any()
         {
-            if (_triggersList.OfType<IgnoreLogAttribute>().Any()) return null!;
+            if (_triggersList.OfType<SkipMarkerAttribute>().Any()) return null!;
             return new object();
         }
 
@@ -38,7 +38,7 @@ namespace BenchMark.BenchMark
         {
             foreach (var trigger in _triggersList)
             {
-                if (trigger is IgnoreLogAttribute) return null!;
+                if (trigger is SkipMarkerAttribute) return null!;
             }
             return new object();
         }
@@ -48,7 +48,7 @@ namespace BenchMark.BenchMark
         {
             for (int i = 0; i < _triggersList.Count; i++)
             {
-                if (_triggersList[i] is IgnoreLogAttribute) return null!;
+                if (_triggersList[i] is SkipMarkerAttribute) return null!;
             }
             return new object();
         }
@@ -58,7 +58,7 @@ namespace BenchMark.BenchMark
         {
             for (int i = 0; i < _triggersArray.Length; i++)
             {
-                if (_triggersArray[i] is IgnoreLogAttribute) return null!;
+                if (_triggersArray[i] is SkipMarkerAttribute) return null!;
             }
             return new object();
         }
@@ -69,12 +69,12 @@ namespace BenchMark.BenchMark
             ReadOnlySpan<object> span = _triggersArray;
             foreach (var trigger in span)
             {
-                if (trigger is IgnoreLogAttribute) return null!;
+                if (trigger is SkipMarkerAttribute) return null!;
             }
             return new object();
         }
     }
 
-    public class IgnoreLogAttribute : Attribute { }
-    public class MyOtherAttribute : Attribute { }
+    public class SkipMarkerAttribute : Attribute { }
+    public class OtherMarkerAttribute : Attribute { }
 }
